@@ -21,8 +21,11 @@ public:
     State getState() const;
     void setState(State state);
     int getMandates() const;
+    int getmId() const;
     void step(Simulation &s);
     const string &getName() const;
+    int timer;
+    void recieveOffer(int agentId);
 
 private:
     int mId;
@@ -30,4 +33,5 @@ private:
     int mMandates;
     JoinPolicy *mJoinPolicy;
     State mState;
+    int bestOffer;
 };
