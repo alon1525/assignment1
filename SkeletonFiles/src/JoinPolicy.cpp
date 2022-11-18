@@ -1,11 +1,27 @@
 #include "JoinPolicy.h"
+#include <string>
 
-JoinPolicy::JoinPolicy() 
-{
-    // You can change the implementation of the constructor, but not the signature!
-}
+using std::string;
 
-class MandatesJoinPolicy : public JoinPolicy 
+int MandatesJoinPolicy::Choose(Party &aParty, Party &bParty)
 {
-    
+    if (aParty.getMandates() > bParty.getMandates())
+    {
+        return aParty.getmId();
+    }
+    else if (aParty.getMandates() < bParty.getMandates())
+    {
+        return bParty.getmId();
+    }
+    else
+    {
+        if (bParty.getmId() < aParty.getmId())
+        {
+            return bParty.getmId();
+        }
+        else
+        {
+            return aParty.getmId();
+        }
+    }
 }
