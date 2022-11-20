@@ -25,3 +25,7 @@ int MandatesJoinPolicy::Choose(Party &aParty, Party &bParty)
         }
     }
 }
+int LastOfferJoinPolicy::Choose(Party &aParty, Party &bParty)
+{
+    return bParty.getmId();      
+}

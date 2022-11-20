@@ -2,6 +2,9 @@
 
 #include <vector>
 #include "Graph.h"
+#include "Party.h"
+#include "Simulation.h"
+#include "Coalition.h"
 
 class SelectionPolicy;
 
@@ -13,9 +16,15 @@ public:
     int getPartyId() const;
     int getId() const;
     void step(Simulation &);
+    Party getParty() const;
+    Coalition agentCoalition = Coalition(*this);
 
 private:
     int mAgentId;
     int mPartyId;
     SelectionPolicy *mSelectionPolicy;
+    Party *agentsParty; 
+    bool start;
+    bool isOriginal;
+    std::vector<Party> neighboors;
 };

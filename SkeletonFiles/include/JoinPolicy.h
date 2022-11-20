@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Party.h"
+
 using std::string;
 
 class JoinPolicy 

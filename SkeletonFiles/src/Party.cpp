@@ -1,6 +1,6 @@
 #include "Party.h"
 
-Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting),timer(0),bestOffer(0) 
+Party::Party(int id, string name, int mandates, JoinPolicy *jp) : mId(id), mName(name), mMandates(mandates), mJoinPolicy(jp), mState(Waiting),timer(0),bestOfferedAgent(nullptr) 
 {
     // You can change the implementation of the constructor, but not the signature!
 }
@@ -30,20 +30,20 @@ const string & Party::getName() const
     return mName;
 }
 
-void Party::recieveOffer(int agentId)
+void Party::recieveOffer(Agent *agent)
 {
     if (mState==Waiting)
     {
         mState = CollectingOffers;
-        bestOffer = agentId;
+        bestOfferedAgent = agent;
     }
     else if (mState==CollectingOffers)
     {
-        //add when written join policy
+        bestOfferedAgent = mJoinPolicy*->choose(bestOfferedAgent,agent);//to ask how to write
     }
     
 }
-
+//we need to to RULE OF 5 here!!!
 void Party::step(Simulation &s)
 {
     // TODO: implement this method

@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-Coalition::Coalition(Party firstParty) : totalMandates(firstParty.getMandates()),coalitionList(1,firstParty.getmId()),offeredParties(),coalitionId(firstParty.getmId())
+Coalition::Coalition(Agent firstAgent) : totalMandates(firstAgent.getParty().getMandates()),coalitionList(1,firstAgent.getPartyId()),offeredParties(),coalitionId(firstAgent.getPartyId())
 {
     // You can change the implementation of the constructor, but not the signature!
 }

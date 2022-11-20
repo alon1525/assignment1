@@ -2,13 +2,14 @@
 
 #include <vector>
 #include "Party.h"
+#include "Agent.h"
 
 using std::vector;
 
 class Coalition
 {
 public:
-    Coalition(Party firstParty);
+    Coalition(Agent firstAgent);
     void addParty(Party partyId);
     void addOfferedParty(int partyId);
     bool hasBeenOffered(int party);

@@ -1,5 +1,8 @@
 #pragma once
 #include <string>
+#include "Agent.h"
+#include <utility>
+#include "JoinPolicy.h"
 
 using std::string;
 
@@ -25,7 +28,7 @@ public:
     void step(Simulation &s);
     const string &getName() const;
     int timer;
-    void recieveOffer(int agentId);
+    void recieveOffer(Agent *agent);
 
 private:
     int mId;
@@ -33,5 +36,5 @@ private:
     int mMandates;
     JoinPolicy *mJoinPolicy;
     State mState;
-    int bestOffer;
+    Agent *bestOfferedAgent;
 };
