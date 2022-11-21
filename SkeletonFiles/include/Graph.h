@@ -12,7 +12,7 @@ public:
     int getEdgeWeight(int v1, int v2) const;
     int getNumVertices() const;
     const Party &getParty(int partyId) const;
-    const vector<Party> getNeighboors(Party curr) const;
+    const std::vector<std::pair<int,Party>> getNeighboors(Party curr) const;
 
 private:
     vector<Party> mVertices;

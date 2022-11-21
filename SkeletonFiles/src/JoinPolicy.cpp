@@ -3,29 +3,18 @@
 
 using std::string;
 
-int MandatesJoinPolicy::Choose(Party &aParty, Party &bParty)
+Agent MandatesJoinPolicy::Choose(Agent &aAgent, Agent &bAgent)
 {
-    if (aParty.getMandates() > bParty.getMandates())
+    if (aAgent.agentCoalition.getTotalMandates()< bAgent.agentCoalition.getTotalMandates())
     {
-        return aParty.getmId();
-    }
-    else if (aParty.getMandates() < bParty.getMandates())
-    {
-        return bParty.getmId();
+        return bAgent;
     }
     else
     {
-        if (bParty.getmId() < aParty.getmId())
-        {
-            return bParty.getmId();
-        }
-        else
-        {
-            return aParty.getmId();
-        }
+        return aAgent;
     }
 }
-int LastOfferJoinPolicy::Choose(Party &aParty, Party &bParty)
+Agent LastOfferJoinPolicy::Choose(Agent &aAgent, Agent &bAgent)
 {
-    return bParty.getmId();      
+    return bAgent;      
 }

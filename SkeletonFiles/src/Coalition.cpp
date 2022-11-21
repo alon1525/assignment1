@@ -1,5 +1,4 @@
 #include "Coalition.h"
-
 #include <algorithm>
 
 Coalition::Coalition(Agent firstAgent) : totalMandates(firstAgent.getParty().getMandates()),coalitionList(1,firstAgent.getPartyId()),offeredParties(),coalitionId(firstAgent.getPartyId())

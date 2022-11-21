@@ -5,6 +5,7 @@
 #include "Agent.h"
 
 using std::vector;
+class Agent;
 
 class Coalition
 {

@@ -1,10 +1,14 @@
 #pragma once
-
 #include <vector>
 #include "Graph.h"
 #include "Party.h"
 #include "Simulation.h"
 #include "Coalition.h"
+#include "SelectionPolicy.h"
+#include <queue>
+
+using namespace std;
+class Party;
 
 class SelectionPolicy;
 
@@ -18,6 +22,7 @@ public:
     void step(Simulation &);
     Party getParty() const;
     Coalition agentCoalition = Coalition(*this);
+    bool isOriginal;
 
 private:
     int mAgentId;
@@ -25,6 +30,6 @@ private:
     SelectionPolicy *mSelectionPolicy;
     Party *agentsParty; 
     bool start;
-    bool isOriginal;
-    std::vector<Party> neighboors;
+    queue<Party> pickingOrder;
+    
 };

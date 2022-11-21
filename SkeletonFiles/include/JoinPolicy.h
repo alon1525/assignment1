@@ -8,14 +8,14 @@ class JoinPolicy
 {
     public:
         JoinPolicy();
-        virtual int Choose(Party &aParty,Party &bParty)=0;
+        virtual Agent Choose(Agent &aAgent,Agent &bAgent)=0;
 };
 
 class MandatesJoinPolicy : public JoinPolicy 
 {
     public:
         MandatesJoinPolicy();
-        int Choose(Party &aParty,Party &bParty) override;
+        Agent Choose(Agent &aAgent,Agent &bAgent) override;
     
 };
 
@@ -23,5 +23,5 @@ class LastOfferJoinPolicy : public JoinPolicy
 {
     public:
         LastOfferJoinPolicy();
-        int Choose(Party &aParty,Party &bParty) override;
+        Agent Choose(Agent &aAgent,Agent &bAgent) override;
 };

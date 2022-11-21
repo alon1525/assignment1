@@ -1,6 +1,6 @@
 #include "Simulation.h"
 
-Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgents(agents) 
+Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgents(agents),mCoalitions(),max(0,0) 
 {
     // You can change the implementation of the constructor, but not the signature!
 }
@@ -8,6 +8,17 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
 void Simulation::step()
 {
     // TODO: implement this method
+}
+
+void Simulation::addCoalition(Coalition coalition)
+{
+    if (max.first<coalition.getTotalMandates())
+    {
+        max.first = coalition.getTotalMandates();
+        max.second = coalition.getCoalitionId();
+    }
+    
+    mCoalitions.push_back(coalition);
 }
 
 bool Simulation::shouldTerminate() const

@@ -39,7 +39,7 @@ void Party::recieveOffer(Agent *agent)
     }
     else if (mState==CollectingOffers)
     {
-        bestOfferedAgent = mJoinPolicy*->choose(bestOfferedAgent,agent);//to ask how to write
+        *bestOfferedAgent = (*mJoinPolicy).Choose(*bestOfferedAgent,*agent);//to ask how to write
     }
     
 }
