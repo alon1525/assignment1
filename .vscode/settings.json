@@ -1,4 +1,5 @@
 {
+    "C_Cpp.loggingLevel": "Debug",
     "C_Cpp.errorSquiggles": "Enabled",
     "files.associations": {
         "array": "cpp",
@@ -64,4 +65,5 @@
         "thread": "cpp",
         "typeindex": "cpp"
     }
+    
 }

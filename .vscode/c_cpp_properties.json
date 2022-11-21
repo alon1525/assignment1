@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/SkeletonFiles",
+                    "${workspaceFolder}/SkeletonFiles/include"
+                ]
+            },
+            "includePath": ["${workspaceFolder}/SkeletonFiles","${workspaceFolder}/SkeletonFiles/include"],
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/g++",
+            "cppStandard": "gnu++14"
+        }
+    ],
+    "version": 4
+}

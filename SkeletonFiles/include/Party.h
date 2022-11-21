@@ -29,6 +29,11 @@ public:
     const string &getName() const;
     int timer;
     void recieveOffer(Agent *agent);
+    virtual ~Party();//destructor
+    Party(const Party &other);//copy constractor
+    Party(Party&& other);
+    Party& operator=(const Party &other);
+    Party& operator=(Party &&other);
 
 private:
     int mId;

@@ -5,7 +5,8 @@ class SelectionPolicy
 {
     public:
         SelectionPolicy();
-        virtual Party Choose(Party &aParty,Party &bParty,int edgeWeight1,int edgeWeight2)=0;
+        virtual ~SelectionPolicy();
+        virtual Party Choose(Party &aParty,Party &bParty,int edgeWeight1,int edgeWeight2)=0;    
 };
 
 class MandatesSelectionPolicy : public SelectionPolicy 

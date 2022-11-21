@@ -9,7 +9,7 @@
 
 using namespace std;
 class Party;
-
+class Simulation;
 class SelectionPolicy;
 
 class Agent
@@ -23,6 +23,11 @@ public:
     Party getParty() const;
     Coalition agentCoalition = Coalition(*this);
     bool isOriginal;
+    virtual ~Agent();//destructor
+    Agent(const Agent &other);//copy constractor
+    Agent(Agent&& other);
+    Agent& operator=(const Agent &other);
+    Agent& operator=(Agent &&other);
 
 private:
     int mAgentId;

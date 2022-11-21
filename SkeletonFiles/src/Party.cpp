@@ -30,6 +30,66 @@ const string & Party::getName() const
     return mName;
 }
 
+Party::~Party()
+{
+    if(mJoinPolicy) delete mJoinPolicy;
+    if(bestOfferedAgent) delete bestOfferedAgent;
+}
+
+Party::Party(const Party &other)
+{
+    mId = other.mId;
+    mName=other.mName;
+    mMandates = other.mMandates;
+    mState = other.mState;
+    timer = other.timer;
+    bestOfferedAgent = new Agent(*(other.bestOfferedAgent));
+    mJoinPolicy = new JoinPolicy(*(other.mJoinPolicy));//fix this 
+}
+
+Party::Party(Party &&other)
+{
+    mId = other.mId;
+    mName=other.mName;
+    mMandates = other.mMandates;
+    mState = other.mState;
+    timer = other.timer;
+    bestOfferedAgent = other.bestOfferedAgent;
+    other.bestOfferedAgent = nullptr;
+
+    mJoinPolicy = other.mJoinPolicy;
+    other.mJoinPolicy = nullptr; 
+}
+
+Party& Party::operator=(const Party &other)
+{
+    mId = other.mId;
+    mName=other.mName;
+    mMandates = other.mMandates;
+    mState = other.mState;
+    timer = other.timer;
+    *bestOfferedAgent = *(other.bestOfferedAgent);
+    *mJoinPolicy = *(other.mJoinPolicy); 
+    return *this;
+}
+Party& Party::operator=(Party &&other)
+{
+    mId = other.mId;
+    mName=other.mName;
+    mMandates = other.mMandates;
+    mState = other.mState;
+    timer = other.timer;
+    if(bestOfferedAgent) delete bestOfferedAgent;
+    bestOfferedAgent = other.bestOfferedAgent;
+    other.bestOfferedAgent = nullptr;
+
+    if(mJoinPolicy) delete mJoinPolicy;
+    mJoinPolicy = other.mJoinPolicy;
+    other.mJoinPolicy = nullptr; 
+
+    return *this;
+}
+
 void Party::recieveOffer(Agent *agent)
 {
     if (mState==Waiting)

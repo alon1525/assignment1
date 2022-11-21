@@ -22,7 +22,70 @@ Party Agent::getParty() const
 {
     return *agentsParty;
 }
-//RULE OF 5!!!
+
+Agent::~Agent()
+{
+    if(mSelectionPolicy) delete mSelectionPolicy;
+    if(agentsParty) delete agentsParty;
+}
+Agent::Agent(const Agent &other)
+{
+    mAgentId = other.mAgentId;
+    mPartyId = other.mPartyId;
+    start = other.start;
+    isOriginal = other.isOriginal;
+    pickingOrder = other.pickingOrder;
+    agentsParty = new Party(*(other.agentsParty));//fix this
+    mSelectionPolicy = new SelectionPolicy(*(other.mSelectionPolicy));//need to fix this
+}
+
+Agent& Agent::operator=(const Agent &other)
+{
+    mAgentId = other.mAgentId;
+    mPartyId = other.mPartyId;   
+    start = other.start;
+    isOriginal = other.isOriginal;
+    pickingOrder = other.pickingOrder;
+    *agentsParty = *(other.agentsParty);
+    *mSelectionPolicy = *(other.mSelectionPolicy);
+    return *this;
+}
+
+Agent::Agent(Agent&& other)
+{
+    mAgentId = other.mAgentId;
+    mPartyId = other.mPartyId;
+    start = other.start;
+    isOriginal = other.isOriginal;
+    pickingOrder = other.pickingOrder;
+    mSelectionPolicy = other.mSelectionPolicy;
+    other.mSelectionPolicy = nullptr;
+    agentsParty = other.agentsParty;
+    other.agentsParty = nullptr;   
+}
+
+Agent& Agent::operator=(Agent &&other)
+{
+    mAgentId = other.mAgentId;
+    mPartyId = other.mPartyId;
+    start = other.start;
+    isOriginal = other.isOriginal;
+    pickingOrder = other.pickingOrder;
+    if(mSelectionPolicy)
+    {
+        delete mSelectionPolicy;
+    }
+    mSelectionPolicy = other.mSelectionPolicy;
+    other.mSelectionPolicy = nullptr;
+    if(agentsParty)
+    {
+        delete agentsParty;
+    }
+    agentsParty = other.agentsParty;
+    other.agentsParty = nullptr;   
+    return *this;
+}
+
 void Agent::step(Simulation &sim)
 {
     if (start)

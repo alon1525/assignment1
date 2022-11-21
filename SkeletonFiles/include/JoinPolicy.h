@@ -1,8 +1,10 @@
 #pragma once
 #include <string>
 #include "Party.h"
+#include "Agent.h"
 
 using std::string;
+class Agent;
 
 class JoinPolicy 
 {

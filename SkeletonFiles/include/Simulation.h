@@ -7,6 +7,7 @@
 
 using std::string;
 using std::vector;
+class Coalition;
 
 class Simulation
 {
